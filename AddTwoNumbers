@@ -1,0 +1,42 @@
+def addTwoNumbers(l1: ListNode, l2: ListNode): ListNode = {
+      var tmp1 = l1
+      var tmp2 = l2
+      val result = new ListNode()
+      var tmpResult1 = result
+      var tmpResult2 = tmpResult1
+      while(tmp1 != null || tmp2 != null ) {
+        tmpResult2 = tmpResult1
+
+        val n1 = {
+          if(tmp1 != null){
+            val a = tmp1._x
+            tmp1 = tmp1.next
+            a
+          } else 0
+        }
+
+        val n2 = {
+          if(tmp2 != null){
+            val b = tmp2._x
+            tmp2 = tmp2.next
+            b
+          } else 0
+        }
+
+        val sum = n1+n2+tmpResult1.x
+        println(s"sum - $sum")
+        val carryOver = sum/10
+        println(s"carryOver - $carryOver")
+        val y = (sum % 10)
+        println(s"y - $y")
+        tmpResult1.x = y
+
+        tmpResult1 = new ListNode(carryOver)
+        tmpResult2.next = tmpResult1
+      } //end of while loop
+
+      if(tmpResult1.x == 0)
+        tmpResult2.next = null
+
+      result
+    }
