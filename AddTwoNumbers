@@ -24,11 +24,8 @@ def addTwoNumbers(l1: ListNode, l2: ListNode): ListNode = {
         }
 
         val sum = n1+n2+tmpResult1.x
-        println(s"sum - $sum")
         val carryOver = sum/10
-        println(s"carryOver - $carryOver")
         val y = (sum % 10)
-        println(s"y - $y")
         tmpResult1.x = y
 
         tmpResult1 = new ListNode(carryOver)
@@ -40,3 +37,13 @@ def addTwoNumbers(l1: ListNode, l2: ListNode): ListNode = {
 
       result
     }
+    
+    def printList(n: ListNode): Unit = {
+    var r1 = n
+    var s = new StringBuilder("")
+    while(r1 != null) {
+      s.append(r1.x)
+      r1 = r1.next
+    }
+    println("Number -> "+s.toString.reverse.toString)
+  }
